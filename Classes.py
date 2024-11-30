@@ -41,7 +41,7 @@ class Cliente:
 class VIP(Cliente):
     def __init__(self, nome1, idade1, sexo1,vip1,acessos1,id1):
         super().__init__(nome1, idade1, sexo1,vip1,acessos1,id1) # o que o cliente vip tem a mais de atributo ?
-
+        self.acessos = "111"
 #Classe para o quarto normal
 class Quarto:
 
@@ -65,9 +65,9 @@ class Quarto:
     def get_id(self):
         return self.id
 
-    def get_reserva(self):
-        print(f"Data da reserva : 00/00/00")
-        print(f"Fim da reserva : 00/00/00")
+    def get_reserva(self,codigo):
+        print(f"Data de Check-In :  0{codigo[0]}/03/2024")
+        print(f"Data de Check-OuT : 0{codigo[1]}/03/2024")
         if self.varanda == 1:
             print(f"Tipo de quarto : Standart , com varanda, {self.andar} andar")
         else:
