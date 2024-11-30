@@ -42,6 +42,8 @@ class VIP(Cliente):
     def __init__(self, nome1, idade1, sexo1,vip1,acessos1,id1):
         super().__init__(nome1, idade1, sexo1,vip1,acessos1,id1) # o que o cliente vip tem a mais de atributo ?
         self.acessos = "111"
+
+
 #Classe para o quarto normal
 class Quarto:
 
