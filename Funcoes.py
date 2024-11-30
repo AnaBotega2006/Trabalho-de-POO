@@ -7,6 +7,7 @@ def acha_nome_por_id(id_achar,clientes):
     for pessoa in clientes :
         if pessoa.get_id() == id_achar :
             return pessoa.nome
+
 def acha_reserva_por_id(id_achar,reservas,quartos):
     for reserva in reservas :
         if reserva[1] == id_achar:
@@ -18,6 +19,7 @@ def acha_vip_por_id(id_achar,clientes):
     for pessoa in clientes :
         if pessoa.get_id() == id_achar :
             return pessoa.vip
+
 
 def gera_quartos_disponiveis(reservas,quartos):
     #reservas = [["34",0,2],["34",1,1]]
@@ -53,5 +55,35 @@ def gera_quartos_disponiveis_pordata(quantd_desejada,data_checkin,data_checkout,
     for quarto1 in quarto_vazio_limitado:
         print(f"Quarto {quarto1[1].get_id() + 1}\t disponivel do dia {quarto1[0][0]} ao dia {quarto1[0][1]} ")
 
+#função checagem intervalo fechado
+def check (minimo,maximo,numero):
+    while ( (numero<minimo) or (numero > maximo) ):
+        print("Número fora dos parâmetros aceitos")
+        numero = int(input("Por favor digite novamente: "))
+    return numero
 
 
+#ESTATÍSTICAS 
+
+#porcentagem de mulheres
+def est_sexo (clientes):
+    soma = 0
+    for pessoa in clientes :
+        soma += pessoa.get_sexo()
+    total = (soma / len(clientes) ) *100
+    return total # de mulheres, em porcentagem
+
+#porcentagem de quartos ocupados FALTA TERMINAR
+def est_quartos(reservas, quartos): 
+    quartos_vazios = len(gera_quartos_disponiveis(reservas,quartos))
+    quartos_ocupados = len(quartos) - quartos_vazios
+    total = (quartos_ocupados / len(quartos) ) *100
+    return total
+
+# idade media dos clientes do hotel
+def est_idade(clientes):
+    soma = 0
+    for pessoa in clientes :
+        soma += pessoa.get_idade()
+    total = (soma / len(clientes) )
+    return total
