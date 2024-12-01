@@ -36,9 +36,15 @@ while choice != 0:
                 id_atual = int(input("Digite seu ID :"))
                 vip = acha_vip_por_id(id_atual,clientes)
 
-                print(f"Bem vindo novamente {acha_nome_por_id(id_atual,clientes)}!\n[1]Alugar Quarto \n[2] Consultar minha reserva \n[3] Alterar minha reserva(exclusivo VIP) \n[3]Fazer consumo no Hotel\n[0]Sair ")
-                choice12 = int(input("Resposta : "))
-                primeira_vez = 1
+                nome = acha_nome_por_id(id_atual,clientes)
+
+                if nome == False:
+                    print("Não encontramos esse ID no nosso sistema. \n Cadastre-se no nosso site ou tente outro ID.")
+                    break
+                else:
+                    print(f"Bem vindo novamente {nome}!\n[1]Alugar Quarto \n[2] Consultar minha reserva \n[3] Alterar minha reserva(exclusivo VIP) \n[3]Fazer consumo no Hotel\n[0]Sair ")
+                    choice12 = int(input("Resposta : "))
+                    primeira_vez = 1
             else :
                 print("=" * 31)
                 print( f"[1]Alugar Quarto \n[2] Consultar minha reserva \n[3] Alterar minha reserva(exclusivo VIP) \n[3]Fazer consumo no Hotel\n[0]Sair ")
@@ -136,8 +142,8 @@ while choice != 0:
                 print(f"O cliente vip de {nome_novo} foi adicionado a lista com id {id_cliente}")
                 clientes.append(a)
 
-                break
-                break
+                #break
+                #break
 
 print(clientes)
 
