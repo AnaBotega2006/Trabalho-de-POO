@@ -12,9 +12,16 @@ def acha_vip_por_id_quarto(quartos, id):
             return quarto.get_vip()
 
 def acha_nome_por_id(id_achar,clientes):
+    verifica = 0
     for pessoa in clientes :
         if pessoa.get_id() == id_achar :
+            verifica = 1
             return pessoa.nome
+            
+            
+    if verifica == 0:
+        return False
+
 def retorna_reserva_por_id(id_achar,reservas,quartos):
     for reserva in reservas :
         if reserva[1] == id_achar:
@@ -86,6 +93,7 @@ def gera_quartos_disponiveis_pordata(quantd_desejada,data_checkin,data_checkout,
                         count += 1
                     else :
                         print(f"Quarto {int(quarto[1]) + 1}\t disponivel somente do dia {quarto[0][0]} ao dia {quarto[0][1]} ")
+                
                         count += 1
     if count == 0:
         print("Não temos quartos disponiveis nessas condicoes ")
