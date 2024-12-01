@@ -42,8 +42,6 @@ class VIP(Cliente):
     def __init__(self, nome1, idade1, sexo1,vip1,acessos1,id1):
         super().__init__(nome1, idade1, sexo1,vip1,acessos1,id1) # o que o cliente vip tem a mais de atributo ?
         self.acessos = "111"
-
-
 #Classe para o quarto normal
 class Quarto:
 
@@ -54,6 +52,12 @@ class Quarto:
         self.varanda = varanda1
         self.camas = ""
         self.id = id1
+        self.vip = 0
+
+    def get_vip(self):
+        return self.vip
+    def get_quantd(self):
+        return self.quantd_pessoas
 
     def get_camas(self):
         return self.quand_camas
@@ -85,16 +89,16 @@ class QuartoVIP(Quarto):
         super().__init__(quantd1 , camas1, andar1, varanda1,id1)
         self.pne = pne1
         self.tematico = tematico1
-
+        self.vip = 1
     def get_pne(self):
         return self.pne
 
     def get_tematico(self):
         return self.tematico
 
-    def get_reserva(self):
-        print(f"Data da reserva : 00/00/00")
-        print(f"Fim da reserva : 00/00/00")
+    def get_reserva(self,codigo):
+        print(f"Data da reserva : {codigo[0]}/03/24")
+        print(f"Fim da reserva : {codigo[1]}/03/24")
         if self.pne == 1 :
             print(f"Quarto adptado para pessoas com necessidades especiais")
         if self.tematico == 1 :
