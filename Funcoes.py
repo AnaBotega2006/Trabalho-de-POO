@@ -26,7 +26,9 @@ def retorna_reserva_por_id(id_achar,reservas,quartos):
     for reserva in reservas :
         if reserva[1] == id_achar:
             return reserva
-
+for quarto in quartos :
+        if quarto.get_id() == id :
+            return quarto.get_vip()
 
 def acha_reserva_por_id(id_achar,reservas,quartos):
     for reserva in reservas :
@@ -39,7 +41,11 @@ def acha_vip_por_id(id_achar,clientes):
     for pessoa in clientes :
         if pessoa.get_id() == id_achar :
             return pessoa.vip
-
+            
+def get_info_por_id(id_achar,quartos):
+    for quarto in quartos :
+        if quarto.get_id() == id :
+            return quarto.get_info()
 
 def gera_quartos_disponiveis(reservas,quartos):
     #reservas = [["34",0,2],["34",1,1]]
@@ -76,9 +82,11 @@ def gera_quartos_disponiveis_pordata(quantd_desejada,data_checkin,data_checkout,
             if acha_vip_por_id_quarto([q1, q2, q3, q4], quarto.get_id()) == 1:
                 count += 1
                 print(f"Quarto (VIP) {quarto.get_id()+1}\t disponivel ")
+                get_info_por_id(quarto.get_id(),quartos)
             else :
                 count += 1
                 print(f"Quarto {quarto.get_id() + 1}\t disponivel ")
+                get_info_por_id(quarto.get_id(),quartos)
 
     for quarto in quarto_vazio_limitado:
 
@@ -93,11 +101,11 @@ def gera_quartos_disponiveis_pordata(quantd_desejada,data_checkin,data_checkout,
                 if data_checkin in range (quarto1dig,quarto2dig + 1) and data_checkout in range (quarto1dig,quarto2dig+1) :
                     if acha_vip_por_id_quarto([q1, q2, q3, q4], quartoid) == 1 :
                         print(f"Quarto (VIP){int(quarto[1]) + 1}\t disponivel somente do dia {quarto[0][0]} ao dia {quarto[0][1]} ")
-                        
+                        get_info_por_id(quartoid,quartos)
                         count += 1
                     else :
                         print(f"Quarto {int(quarto[1]) + 1}\t disponivel somente do dia {quarto[0][0]} ao dia {quarto[0][1]} ")
-                
+                        get_info_por_id(quartoid,quartos)
                         count += 1
     if count == 0:
         print("Não temos quartos disponiveis nessas condicoes ")
