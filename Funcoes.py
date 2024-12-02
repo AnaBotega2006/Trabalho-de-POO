@@ -26,7 +26,7 @@ def retorna_reserva_por_id(id_achar,reservas,quartos):
     for reserva in reservas :
         if reserva[1] == id_achar:
             return reserva
-for quarto in quartos :
+    for quarto in quartos :
         if quarto.get_id() == id :
             return quarto.get_vip()
 
@@ -79,14 +79,14 @@ def gera_quartos_disponiveis_pordata(quantd_desejada,data_checkin,data_checkout,
     for quarto in quartos_vazios: # esta ok para quantidade
         count = 0
         if quarto.get_quantd() == quantd_desejada:
-            if acha_vip_por_id_quarto([q1, q2, q3, q4], quarto.get_id()) == 1:
+            if acha_vip_por_id_quarto([q1, q2, q3, q4], quarto.get_id()):
                 count += 1
                 print(f"Quarto (VIP) {quarto.get_id()+1}\t disponivel ")
-                get_info_por_id(quarto.get_id(),quartos)
+                get_info_por_id(quarto.get_id(),[q1,q2,q3,q4])
             else :
                 count += 1
                 print(f"Quarto {quarto.get_id() + 1}\t disponivel ")
-                get_info_por_id(quarto.get_id(),quartos)
+                get_info_por_id(quarto.get_id(),)
 
     for quarto in quarto_vazio_limitado:
 
@@ -96,16 +96,16 @@ def gera_quartos_disponiveis_pordata(quantd_desejada,data_checkin,data_checkout,
             quarto1dig = int(quarto[0][0])
             quarto2dig = int(quarto[0][1])
             quartoid = int(quarto[1])
-            if acha_quantd_por_id_quarto([q1, q2, q3, q4], quartoid) == quantd_desejada:
+            if acha_quantd_por_id_quarto([q1, q2, q3, q4], quartoid) >= quantd_desejada:
 
                 if data_checkin in range (quarto1dig,quarto2dig + 1) and data_checkout in range (quarto1dig,quarto2dig+1) :
                     if acha_vip_por_id_quarto([q1, q2, q3, q4], quartoid) == 1 :
                         print(f"Quarto (VIP){int(quarto[1]) + 1}\t disponivel somente do dia {quarto[0][0]} ao dia {quarto[0][1]} ")
-                        get_info_por_id(quartoid,quartos)
+                        get_info_por_id(quartoid,[q1,q2,q3,q4])
                         count += 1
                     else :
                         print(f"Quarto {int(quarto[1]) + 1}\t disponivel somente do dia {quarto[0][0]} ao dia {quarto[0][1]} ")
-                        get_info_por_id(quartoid,quartos)
+                        get_info_por_id(quartoid,[q1,q2,q3,q4])
                         count += 1
     if count == 0:
         print("Não temos quartos disponiveis nessas condicoes ")
@@ -113,14 +113,14 @@ def gera_quartos_disponiveis_pordata(quantd_desejada,data_checkin,data_checkout,
     else :
         return True
 
-def retorna_fatura(id_atual,reservas,clientes):
+def retorna_fatura(id_atual,reservas,clientes,reserva_dela1):
     fatura = 0
     fatura2 = 0 
     f_total = 0 
     for cliente in clientes : 
         if cliente.get_id() == id_atual:
             acessos = cliente.get_acessos()
-            reserva_dela = retorna_reserva_por_id(id_atual,reservas,[q1,q2,q3,q4])
+            reserva_dela = reserva_dela1
             vip = acha_vip_por_id_quarto([q1,q2,q3,q4], reserva_dela[2])
 
             if vip == 0 : #se o quarto nao for vip o preco e 100 por dia (dia vem do range)
