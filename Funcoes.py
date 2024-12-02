@@ -93,6 +93,7 @@ def gera_quartos_disponiveis_pordata(quantd_desejada,data_checkin,data_checkout,
                 if data_checkin in range (quarto1dig,quarto2dig + 1) and data_checkout in range (quarto1dig,quarto2dig+1) :
                     if acha_vip_por_id_quarto([q1, q2, q3, q4], quartoid) == 1 :
                         print(f"Quarto (VIP){int(quarto[1]) + 1}\t disponivel somente do dia {quarto[0][0]} ao dia {quarto[0][1]} ")
+                        
                         count += 1
                     else :
                         print(f"Quarto {int(quarto[1]) + 1}\t disponivel somente do dia {quarto[0][0]} ao dia {quarto[0][1]} ")
