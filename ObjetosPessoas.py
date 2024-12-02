@@ -3,8 +3,6 @@ from Classes import *
 
 #beneificos 
 #BeneficiosdoVIP(pne,tematico,servicodequarto):
-beneficios1 =  BeneficiosdoVIP(0,1,1):
-beneficios2 =  BeneficiosdoVIP(1,0,1):
 
 
 #(self,quantd1 , camas1, andar1, varanda1,id1):
@@ -12,8 +10,8 @@ beneficios2 =  BeneficiosdoVIP(1,0,1):
 q1 = Quarto(4, "2C0S", 1, 1,0)
 q2 = Quarto(2, "2S0S", 2, 0,1)
 q3 = Quarto(3, "1C1S", 1, 0,2)
-q4 = QuartoVIP(4 , "1C2S", 3, 1,3,1,3,benedicios1)
-q5 = QuartoVIP(2 , "1C0S", 3, 1,3,1,4,beneficios2)
+q4 = QuartoVIP(4 , "1C2S", 3, 1,3,beneficios1)
+q5 = QuartoVIP(2 , "1C0S", 3, 1,4,beneficios2)
 q6 = Quarto(3, "1C1S", 1, 1,5)
 q7 = Quarto(4, "2C0S", 2, 1,6)
 q8 = Quarto(2, "0C2S", 1, 0,7)
