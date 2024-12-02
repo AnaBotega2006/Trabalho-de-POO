@@ -83,13 +83,13 @@ class Quarto:
         print(f"Andar : {self.andar}")
 
 #Classe de beneficios do Quarto VIP
-"""
+
 class BeneficiosdoVIP(pne,tematico,servicodequarto):
         def __init__(,self,pne1,tematico1,servicodequarto1):
             self.pne = pne1
             self.tematico = tematico1
             self.servicodequarto = servicodequarto1
-"""
+
 #Classe para o quarto VIP
 class QuartoVIP(Quarto):
     def __init__(self,quantd1 , camas1, andar1, varanda1,id1,beneficios):
