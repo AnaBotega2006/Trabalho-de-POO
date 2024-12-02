@@ -81,7 +81,14 @@ class Quarto:
         self.camas = f"{self.quand_camas[0]} cama(s) de solteiro / {self.quand_camas[2]} camas(s) de casal"
         print(f"Caracteristicas : {self.camas}")
         print(f"Andar : {self.andar}")
-
+    def get_info(self)
+        if self.varanda == 1:
+            print(f"Tipo de quarto : Standart , com varanda, {self.andar} andar")
+        else:
+            print(f"Tipo de quarto : Standart , sem varanda, {self.andar} andar")
+        self.camas = f"{self.quand_camas[0]} cama(s) de solteiro / {self.quand_camas[2]} camas(s) de casal"
+        print(f"Caracteristicas : {self.camas}")
+        print(f"Andar : {self.andar}")
 #Classe de beneficios do Quarto VIP
 
 class BeneficiosdoVIP(pne,tematico,servicodequarto):
@@ -116,3 +123,14 @@ class QuartoVIP(Quarto):
         print(f"Caracteristicas : {self.camas}")
         print(f"Andar : {self.andar}")
 
+    def get_info(self):
+        """
+        if self.pne == 1 :
+            print(f"Quarto adptado para pessoas com necessidades especiais")
+        if self.tematico == 1 :
+            print("Quarto tematico ")
+        """
+        print(f"Tipo de quarto : Premium , com varanda e suite , {self.andar} andar")
+        self.camas = f"{self.quand_camas[0]} cama(s) de solteiro / {self.quand_camas[2]} camas(s) de casal"
+        print(f"Caracteristicas : {self.camas}")
+        print(f"Andar : {self.andar}")
