@@ -2,7 +2,7 @@ from Classes import *
 
 
 #beneificos 
-beneficios1 = 
+beneficios1 = BeneficiosVIP
 beneficios2 = 
 
 
