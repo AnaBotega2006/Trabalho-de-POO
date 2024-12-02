@@ -2,8 +2,9 @@ from Classes import *
 
 
 #beneificos 
-beneficios1 = BeneficiosVIP
-beneficios2 = 
+#BeneficiosdoVIP(pne,tematico,servicodequarto):
+beneficios1 =  BeneficiosdoVIP(0,1,1):
+beneficios2 =  BeneficiosdoVIP(1,0,1):
 
 
 #(self,quantd1 , camas1, andar1, varanda1,id1):
