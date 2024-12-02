@@ -3,15 +3,12 @@ from ObjetosPessoas import *
 from Funcoes import *
 
 # listas de controle
-clientes = [c1,c2,c3,c4]
+clientes = [c1,c2,c3,c4,c5,c6,c7,c8]
+#quartos = [q1,q2,q3,q4,q5,q6,q7,q8]
 quartos = [q1,q2,q3,q4]
 quartos_alugados = []
-dias = [1,2,3,4]
-disponiveis_dia1 = [q1,q2,q3]
-disponiveis_dia2 = [q1,q2,q3]
-disponiveis_dia3 = [q1]
-disponiveis_dia4 = [q1]
-reservas = [["34",0,2],["12",1,1],["14",3,3]]
+dias = [1,2,3,4,5,6,7,8,9]
+reservas = [["34",0,2,0],["12",1,1,0],["14",3,3,0]]
 
 # variaveis
 id_cliente = len(clientes) - 1
@@ -42,12 +39,12 @@ while choice != 0:
                     print("Não encontramos esse ID no nosso sistema. \n Cadastre-se no nosso site ou tente outro ID.")
                     break
                 else:
-                    print(f"Bem vindo novamente {nome}!\n[1]Alugar Quarto \n[2] Consultar minha reserva \n[3] Alterar minha reserva(exclusivo VIP) \n[3]Fazer consumo no Hotel\n[0]Sair ")
+                    print(f"Bem vindo novamente {nome}!\n[1]Alugar Quarto \n[2] Consultar minha reserva \n[3] Alterar minha reserva(exclusivo VIP) \n[4]Fazer consumo no Hotel \n [5]Fatura\n[0]Sair ")
                     choice12 = int(input("Resposta : "))
                     primeira_vez = 1
             else :
                 print("=" * 31)
-                print( f"[1]Alugar Quarto \n[2] Consultar minha reserva \n[3] Alterar minha reserva(exclusivo VIP) \n[3]Fazer consumo no Hotel\n[0]Sair ")
+                print( f"[1]Alugar Quarto \n[2] Consultar minha reserva \n[3] Alterar minha reserva(exclusivo VIP) \n[4]Fazer consumo no Hotel 1\n [5]Fatura\n[0]Sair ")
                 choice12 = int(input("Resposta : "))
             print("=" * 31)
 
@@ -110,6 +107,111 @@ while choice != 0:
                                 print(f"A reserva do  Quarto {reserva_dela[1]+1} foi cancelada ")
                                 reservas.remove(reserva_dela)
                         print(reservas)
+            
+            #FAZER CONSUMO 
+            elif choice12 == 4: 
+                for c in clientes : 
+                    if id_atual == c.get_id():
+                        acessos = c.get_acessos()
+                        open_bar = acessos[0] 
+                        restaurante = acessos[1]
+                        shows = acessos[2]
+
+                        if open_bar == 1 : 
+                            print("Voce tem acesso ao Open-Bar ")
+
+                        else:
+                            choice4= 1
+                            while choice4 != 0 : 
+                                print("Você deseja consumir algo no bar?")
+                                choice4 = int(input("opçõs de consumo \n [1] agua R$ 2,00\n [2] coca R$ 3,00 \n [3] chips R$ 4,00 \n [0] nenhum \n resposta:" ))
+                                reserva_dela = retorna_reserva_por_id(id_atual,reservas,quartos)
+                                if choice4 == 1:
+                                    reserva_dela[3] += 2
+                                    print(f"Seu consumo atual é de: R$ {reserva_dela[3]},00")
+                                
+                                if choice4 == 2:
+                                    reserva_dela[3] += 3
+                                    print(f"Seu consumo atual é de: R$ {reserva_dela[3]},00")
+                                
+                                if choice4 == 3:
+                                    reserva_dela[3] += 4  
+                                    print(f"Seu consumo atual é de: R$ {reserva_dela[3]},00")                  
+
+                        
+                        if restaurante == 1 :
+                            print("Voce tem acesso aos Restaurantes ")
+                        else:
+                            choice4= 1
+                            while choice4 != 0 : 
+                                print("Você deseja consumir algo no restaurante?")
+                                choice4 = int(input("opçõs de consumo \n [1] Cafe da manha R$ 20,00\n [2] Almoco R$ 30,00 \n [3] Janta R$ 30,00 \n [0] nenhum \n resposta:" ))
+                                if choice4 != 0:
+                                    print("Obs : por pessoa ")
+                                    quantd = int(input("Quantidade de refeicoes : "))
+                                    reserva_dela = retorna_reserva_por_id(id_atual,reservas,quartos)
+
+                                if choice4 == 1:
+                                    reserva_dela[3] += 20 * quantd
+                                    print(f"Seu consumo atual é de: R$ {reserva_dela[3]},00")
+                                
+                                if choice4 == 2:
+                                    reserva_dela[3] += 30 * quantd
+                                    print(f"Seu consumo atual é de: R$ {reserva_dela[3]},00")
+                                
+                                if choice4 == 3:
+                                    reserva_dela[3] += 30 * quantd 
+                                    print(f"Seu consumo atual é de: R$ {reserva_dela[3]},00")
+
+
+                        if shows == 1 :
+                            print("Voce tem acesso aos Shows ")
+
+                        #COMPLETAR 
+
+
+            if choice12 == 5:
+                retorna_fatura(id_atual,reservas,clientes)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         # cadastra cliente
     elif choice == 2:
             # (self, nome1, idade1, sexo1, vip1, acessos1, id1):
