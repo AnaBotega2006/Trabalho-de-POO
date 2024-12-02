@@ -1,7 +1,9 @@
 from Classes import *
 
 
-
+#beneificos 
+beneficios1 = 
+beneficios2 = 
 
 
 #(self,quantd1 , camas1, andar1, varanda1,id1):
@@ -13,6 +15,7 @@ q5 = QuartoVIP(2 , "1C0S", 3, 1,3,1,4)
 q6 = Quarto(3, "1C1S", 1, 1,5)
 q7 = Quarto(4, "2C0S", 2, 1,6)
 q8 = Quarto(2, "0C2S", 1, 0,7)
+
 
 
 
