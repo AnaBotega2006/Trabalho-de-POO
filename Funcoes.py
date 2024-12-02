@@ -26,6 +26,8 @@ def retorna_reserva_por_id(id_achar,reservas,quartos):
     for reserva in reservas :
         if reserva[1] == id_achar:
             return reserva
+
+
 def acha_reserva_por_id(id_achar,reservas,quartos):
     for reserva in reservas :
         if reserva[1] == id_achar:
@@ -87,6 +89,7 @@ def gera_quartos_disponiveis_pordata(quantd_desejada,data_checkin,data_checkout,
             quarto2dig = int(quarto[0][1])
             quartoid = int(quarto[1])
             if acha_quantd_por_id_quarto([q1, q2, q3, q4], quartoid) == quantd_desejada:
+
                 if data_checkin in range (quarto1dig,quarto2dig + 1) and data_checkout in range (quarto1dig,quarto2dig+1) :
                     if acha_vip_por_id_quarto([q1, q2, q3, q4], quartoid) == 1 :
                         print(f"Quarto (VIP){int(quarto[1]) + 1}\t disponivel somente do dia {quarto[0][0]} ao dia {quarto[0][1]} ")
@@ -100,6 +103,66 @@ def gera_quartos_disponiveis_pordata(quantd_desejada,data_checkin,data_checkout,
         return False
     else :
         return True
+
+def retorna_fatura(id_atual,reservas,clientes):
+    fatura = 0
+    fatura2 = 0 
+    f_total = 0 
+    for cliente in clientes : 
+        if cliente.get_id() == id_atual:
+            acessos = cliente.get_acessos()
+            reserva_dela = retorna_reserva_por_id(id_atual,reservas,[q1,q2,q3,q4])
+            vip = acha_vip_por_id_quarto([q1,q2,q3,q4], reserva_dela[2])
+
+            if vip == 0 : #se o quarto nao for vip o preco e 100 por dia (dia vem do range)
+                for dia in range (int(reserva_dela[0][0]),int(reserva_dela[0][1])+ 1): 
+                    fatura = fatura + 100 
+            else :
+                for dia in range (int(reserva_dela[0][0]),int(reserva_dela[0][1])+ 1): 
+                    fatura = fatura + 200 
+    print(f"Por {reserva_dela[0][1]} dias no quarto : R${fatura},00")
+    for beneficio in acessos:
+        if beneficio == 1: 
+            fatura2 = fatura2 + 150
+    print(f"Por {acessos.count("1")} beneficios comprados: R${fatura2},00")
+    f_total = fatura + fatura2 + reserva_dela[3]
+    print(f"No total(diaria + consumos + beneficios) voce deve pagar : R${f_total},00")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #função checagem intervalo fechado
