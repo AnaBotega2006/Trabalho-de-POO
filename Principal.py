@@ -44,7 +44,7 @@ while choice != 0:
                     primeira_vez = 1
             else :
                 print("=" * 31)
-                print( f"[1]Alugar Quarto \n[2] Consultar minha reserva \n[3] Alterar minha reserva(exclusivo VIP) \n[4]Fazer consumo no Hotel 1\n [5]Fatura\n[0]Sair ")
+                print( f"[1]Alugar Quarto \n[2] Consultar minha reserva \n[3] Alterar minha reserva(exclusivo VIP) \n[4]Fazer consumo no Hotel 1\n[5]Fatura\n[0]Sair ")
                 choice12 = int(input("Resposta : "))
             print("=" * 31)
 
@@ -65,13 +65,13 @@ while choice != 0:
 
                     # reservas = [["34", 0, 2], ["12", 1, 1]]
                     if acha_vip_por_id_quarto([q1,q2,q3,q4], qual_quer-1) == 1 and vip == 1:
-                        reservas.append([f"{data_checkin}{data_checkout}", id_atual, qual_quer - 1])
+                        reservas.append([f"{data_checkin}{data_checkout}", id_atual, qual_quer - 1,0])
                         print(f"O Quarto {qual_quer} foi alugado do dia {data_checkin} ao dia {data_checkout} com sucesso !!")
                     elif acha_vip_por_id_quarto([q1,q2,q3,q4], qual_quer-1) == 1 and vip == 0 :
                         print("\n Desculpe , esse quarto é reservado somente para clientes VIP")
                     else:
                         print(f"O Quarto {qual_quer} foi alugado do dia {data_checkin} ao dia {data_checkout} com sucesso !!")
-                        reservas.append([f"{data_checkin}{data_checkout}", id_atual, qual_quer - 1])
+                        reservas.append([f"{data_checkin}{data_checkout}", id_atual, qual_quer - 1,0])
                     print("=" * 31)
             elif choice12 == 2:
 
@@ -113,9 +113,9 @@ while choice != 0:
                 for c in clientes : 
                     if id_atual == c.get_id():
                         acessos = c.get_acessos()
-                        open_bar = acessos[0] 
-                        restaurante = acessos[1]
-                        shows = acessos[2]
+                        open_bar = int(acessos[0])
+                        restaurante = int(acessos[1])
+                        shows = int(acessos[2])
 
                         if open_bar == 1 : 
                             print("Voce tem acesso ao Open-Bar ")
@@ -171,7 +171,9 @@ while choice != 0:
 
 
             if choice12 == 5:
-                retorna_fatura(id_atual,reservas,clientes)
+                for reserva in reservas : 
+                    if reserva[1] == id_atual:
+                        retorna_fatura(id_atual,reservas,clientes,reserva)
 
 
 
