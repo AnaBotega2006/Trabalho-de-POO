@@ -40,11 +40,14 @@ class Cliente:
         return self.id
 
 
+
 #Classe para o cliente VIP
 class VIP(Cliente):
     def __init__(self, nome1, idade1, sexo1,vip1,acessos1,id1):
         super().__init__(nome1, idade1, sexo1,vip1,acessos1,id1)
         self.acessos = "111"
+
+
 #Classe para o quarto normal
 class Quarto:
 
@@ -138,7 +141,7 @@ class QuartoVIP(Quarto):
         print(f"Caracteristicas : {self.camas}")
         print(f"Andar : {self.andar}")
 
-
+#quantidade , camas, andar1, varanda1,id1
 q1 = Quarto(4, "2C0S", 1, 1,0)
 q2 = Quarto(2, "2S0S", 2, 0,1)
 q3 = Quarto(3, "1C1S", 1, 0,2)
