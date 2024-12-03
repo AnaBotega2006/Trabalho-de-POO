@@ -16,9 +16,7 @@ def acha_nome_por_id(id_achar,clientes):
     for pessoa in clientes :
         if pessoa.get_id() == id_achar :
             verifica = 1
-            return pessoa.nome
-            
-            
+            return pessoa.nome    
     if verifica == 0:
         return False
 
@@ -113,6 +111,7 @@ def gera_quartos_disponiveis_pordata(quantd_desejada,data_checkin,data_checkout,
     else :
         return True
 
+
 def retorna_fatura(id_atual,reservas,clientes,reserva_dela1):
     fatura = 0
     fatura2 = 0 
@@ -136,42 +135,6 @@ def retorna_fatura(id_atual,reservas,clientes,reserva_dela1):
     print(f"Por {acessos.count("1")} beneficios comprados: R${fatura2},00")
     f_total = fatura + fatura2 + reserva_dela[3]
     print(f"No total(diaria + consumos + beneficios) voce deve pagar : R${f_total},00")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #função checagem intervalo fechado
